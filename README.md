@@ -1,4 +1,4 @@
-# table-data-angulatjs2
+# table-data-angularjs2
 Build a single page web-app in Angular2
 
 Build a single page web-app which displays nested grid using Angular
