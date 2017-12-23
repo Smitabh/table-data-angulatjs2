@@ -2,9 +2,6 @@ import { Component ,Input, Output, EventEmitter,NgModule,OnInit} from '@angular/
 import { Router} from '@angular/router';
 import { empdataInfo} from  './Model/gridData';
 import { empService} from './Service/employeeSrvc.service';
-import { empdata } from './Model/data';
-//import { FilterPipe} from './pipes';
-//import { FilterPipe } from './pipes'; //'./category.pipe';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -13,14 +10,11 @@ import 'rxjs/add/operator/catch';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
- // pipes: [FilterPipe]   // This Line
 })
 
 export class AppComponent {
-  title = 'NestedTable Demo'; 
+  title = 'Table-Data Demo'; 
   data1 = '';  
-  //inputName : string = '';
-  //queryString:string = '';
   nextLibAvailable: boolean= false;
   isShow:boolean;
   isHide:boolean;
@@ -35,18 +29,18 @@ export class AppComponent {
   status:boolean = false;
   statusdel:boolean = false;
   deletemsg:string;
+
  public genders = [
     { value: 'F', display: 'Female' },
     { value: 'M', display: 'Male' }
  ];
- constructor(private infoService:empService){
-   //this.empList = empdata;
- }
-
+ constructor(private infoService:empService){}
+ 
   ngOnInit()
   {
      this.getEmplList();
      this.isHide = true;
+     
   }
   
   Show(data){
@@ -60,7 +54,7 @@ getEmplList() {
             Dataemp=> {
                console.log(Dataemp)
               this.empList = Dataemp;
-              //this.empList = empdata;
+         
               for(let i=0; i < this.empList.length; i++){
                 this.empList[i].salary[0].salaryTot = this.empList[i].salary[0].basic + this.empList[i].salary[0].allowance - this.empList[i].salary[0].deduction;
               }
@@ -70,7 +64,7 @@ getEmplList() {
     //edit data
     editdata(editid)
     {
-        this.emp = this.empList.filter(p=>p.id==editid)[0];
+      this.emp = this.empList.filter(p=>p.id==editid)[0];
        let Basic = this.emp.salary[0].basic;
        let Allowance = this.emp.salary[0].allowance;
        let Deduction = this.emp.salary[0].deduction;
@@ -78,6 +72,7 @@ getEmplList() {
     }
     chngeval(data){
       data.salary[0].salaryTot = parseInt(data.salary[0].basic) + parseInt(data.salary[0].allowance) - parseInt(data.salary[0].deduction);
+     
       this.sucessmsg = 'Salary updated successfully..!';
        this.status = true;
        
@@ -93,7 +88,6 @@ getEmplList() {
       }
     }
     deletedata(data){
-     // alert('data--'+data);
         if(confirm("Are you sure to delete this record")) {
          for(let i=0; i < this.empList.length; i++){
       
@@ -109,7 +103,6 @@ getEmplList() {
         setTimeout(() => {
           this.statusdel = false;
         },3000);
-      
     }
-
+   
   }
