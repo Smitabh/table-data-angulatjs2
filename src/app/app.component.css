@@ -1,5 +1,28 @@
 
+
+
 .successmsg {
     color: red;
     font-size: 14px;
+}
+.txtsal{
+    width: 60px;
+    border-radius:3px;
+}
+.btn-default {
+    color: #070707;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+select.ng-pristine.ng-valid.ng-touched[_ngcontent-c0] {
+    width: 130px;
+    height: 25px;
+}
+ select {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    width: 130px;
+    height: 25px;
 }
